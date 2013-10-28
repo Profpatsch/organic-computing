@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: NetLogo-Pygments-Lexer
+Version: 0.1.2
+Summary: NetLogo syntax colorer using Pygments
+Home-page: http://
+Author: Jan C. Thiele
+Author-email: jthiele@gwdg.de
+License: GPL
+Description: UNKNOWN
+Platform: UNKNOWN

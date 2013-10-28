@@ -1,0 +1,29 @@
+= Arbeitsblatt 1
+//:source-highlighter: pygments
+
+[qanda]
+Was ist die schnellste Route, die Sie für die Szenerie aus Aufgabe d finden können?::
+  (city 1) (city 0) (city 3) (city 4) (city 2),
+   Länge: 94,3
+
+Wie lange würde das Verfahren dafür benötigen, wenn 1 Million Routen pro Sekunde berechnet werden können::
+30! - 59?
+Also einfach jede Route ausprobieren. Die - 59 kommen
+daher, dass ja eh jeweils 60 Routen genau gleich lang sind. Die Laufzeit
+wäre dann lächerliche 8.4 * 10^18 Jahre.
+
+Was für eine Laufzeit hat der ACO-Algorithmus?::
+Sei l die Anzahl der Städte, m die Anzahl der Ameisen und n die Anzahl der
+Iterationen, dann liegt die Laufzeit in `O(l^2*m*n)`
+
+Was bedeutet alpha = 0?::
+Dass die Pheromone nicht mehr berücksichtigt werden.
+
+Welchem Suchverfahren entspricht dieses Verhalten?::
+Der Minimumsuche bezogen auf die Distanz zur nächsten nicht besuchten Stadt.
+
+Wie ist das Verhalten, wenn beta = 0 gesetzt wird?::
+Distanz wird nicht mehr berücksichtigt. Erster Durchlauf komplett zufällig, da
+die Einträge der Pheromon-Matrix alle gleich sind. Ameisen brauchen
+vergleichsweise lange, um sich zu verbessern, finden dann aber sehr gute
+Lösungen, sofern die Anzahl der Iterationen hoch genug ist.

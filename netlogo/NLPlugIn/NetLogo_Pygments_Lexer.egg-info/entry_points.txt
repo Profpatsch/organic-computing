@@ -1,0 +1,6 @@
+
+    [pygments.lexers]
+    NetLogo = netlogo:NetLogoLexer
+    [pygments.styles]
+    NetLogo = netlogo:NetLogoStyle
+    
