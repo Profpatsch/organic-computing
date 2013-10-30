@@ -1,6 +1,7 @@
 breed [ ants ant ]
 breed [ particles particle ]
 
+
 to setup
   clear-all
   reset-ticks
@@ -8,51 +9,68 @@ to setup
   set-default-shape particles "leaf"
   
   ifelse init-centrally
-    [ create-ants ant-count ]
-    [ distribute-ants particle-density ]
+    [
+      create-ants ant-count[ 
+        set size 1
+        set color red
+      ]
+    ] 
+    [
+      create-ants ant-count [
+        setxy random-xcor random-ycor  
+        set size 1       
+        set color red
+      ]
+    ]
   
-  create-particles particle-count [ setxy random-xcor random-ycor ]
+  create-particles particle-count [ 
+    setxy random-xcor / particle-density random-ycor / particle-density 
+    set size 1   
+    set color green
+  ]
+  
 end
 
-to distribute-ants [ density ]
-  create-ants ant-count [setxy random-xcor / density random-ycor / density ]
-end
+
 
 to go
   move-randomly
   ; haben sie was in der Hand?
   ask ants [
-    if-else particle-picked-up?
+    if-else count my-out-links > 0
       [ check-for-pile ]
       [ check-for-particle ]
   ]
   tick
 end
 
-to-report particle-picked-up?
-  print self
-  report my-links = nobody
-end
-
 to check-for-pile
-  print "foo"
-  if particles-here != nobody [
+  if count particles-here > 1 [
      ; Auf leeren Nachbarn ablegen
-     let p one-of neighbors with [ one-of particles-here = nobody ]
-     move-to p
-     ask links [ die ]
+     let p one-of neighbors with [ count particles-here = 0 ]
+     if p != nobody[
+       move-to p
+       ask my-out-links [ die ]
+     ]
+     right random 360
+     jump step-length
    ]
-   right random 360
-   jump step-length
+  
 end
 
 to check-for-particle
-  print "bar"
-  if particles-here != nobody [
-      print self
-      create-link-to one-of particles-here [tie]
+  if count particles-here > 0 [
+    let to-carry nobody
+    ask particles-here[
+      if count my-in-links = 0 [
+        set to-carry self
+      ]
+    ]
+    if to-carry != nobody [
+      create-link-to to-carry [ tie ]
       jump step-length
     ]
+  ]
 end
 
 to move-randomly
@@ -64,12 +82,12 @@ to move-randomly
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-249
-10
-688
-470
-16
-16
+266
+13
+809
+577
+20
+20
 13.0
 1
 10
@@ -80,10 +98,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-20
+20
+-20
+20
 0
 0
 1
@@ -97,9 +115,9 @@ SLIDER
 103
 ant-count
 ant-count
-0
+1
 100
-50
+1
 1
 1
 NIL
@@ -113,8 +131,8 @@ SLIDER
 particle-count
 particle-count
 0
-100
-46
+500
+64
 1
 1
 NIL
@@ -142,7 +160,7 @@ SWITCH
 228
 init-centrally
 init-centrally
-0
+1
 1
 -1000
 
@@ -189,11 +207,28 @@ particle-density
 particle-density
 1
 3
-2
+1
 1
 1
 NIL
 HORIZONTAL
+
+BUTTON
+1118
+20
+1181
+53
+NIL
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
