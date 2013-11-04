@@ -35,6 +35,7 @@ end
 
 
 to go
+  if ticks = iterations [ stop ]
   move-randomly
   ask ants [
     ; haben sie was in der Hand?
@@ -87,10 +88,10 @@ to move-randomly
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-266
-13
-809
-577
+233
+10
+776
+574
 20
 20
 13.0
@@ -114,30 +115,30 @@ ticks
 30.0
 
 SLIDER
-46
-70
-218
-103
+51
+107
+223
+140
 ant-count
 ant-count
 1
 100
-4
+12
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-46
-113
-218
-146
+47
+148
+219
+181
 particle-count
 particle-count
 0
 500
-146
+48
 1
 1
 NIL
@@ -145,9 +146,9 @@ HORIZONTAL
 
 SLIDER
 42
-261
+278
 214
-294
+311
 step-length
 step-length
 0
@@ -159,13 +160,13 @@ NIL
 HORIZONTAL
 
 SWITCH
-61
-195
-190
-228
+67
+234
+196
+267
 init-centrally
 init-centrally
-1
+0
 1
 -1000
 
@@ -204,25 +205,25 @@ NIL
 0
 
 SLIDER
-46
-155
-218
-188
+47
+189
+219
+222
 particle-density
 particle-density
 1
 3
-1
+3
 1
 1
 NIL
 HORIZONTAL
 
 BUTTON
-1118
-20
-1181
-53
+131
+60
+194
+93
 NIL
 go
 NIL
@@ -234,6 +235,32 @@ NIL
 NIL
 NIL
 1
+
+MONITOR
+100
+373
+157
+418
+NIL
+ticks
+17
+1
+11
+
+SLIDER
+43
+324
+215
+357
+iterations
+iterations
+0
+100
+50
+1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

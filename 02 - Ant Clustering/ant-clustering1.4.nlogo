@@ -2,6 +2,10 @@ breed [ ants ant ]
 breed [ particles particle ]
 particles-own [ taken ]
 
+; Grundidee: Partikel werden in verschiedene Gruppen verteilt und die Ameisen legen die jeweiligen Partikel 
+; immer nur zu Partikeln derselben Gruppe. Außerdem machen sie eine Wende um 180 Grad, wenn sie einen
+; Partikel sehen, der einer anderen Gruppe zugehört als sie gerade tragen
+
 to setup
   clear-all
   reset-ticks
@@ -57,7 +61,7 @@ to check-for-wrong-pile
   let false-pile nobody
   let my-particle-number [who] of ([other-end] of one-of my-out-links)
   ask neighbors [
-    if count particles-here > 0[
+    if count particles-here with [taken = false] > 0[
       if [who] of one-of particles-here mod cluster-count != my-particle-number mod cluster-count[
         set false-pile self
       ]
@@ -138,55 +142,55 @@ ticks
 30.0
 
 SLIDER
-46
-70
-218
-103
+50
+106
+222
+139
 ant-count
 ant-count
 1
 100
-7
+9
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-46
-113
-218
-146
+49
+150
+221
+183
 particle-count
 particle-count
 0
 500
-146
+197
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-42
-261
-214
-294
+47
+279
+219
+312
 step-length
 step-length
 0
 20
-2
+6
 1
 1
 NIL
 HORIZONTAL
 
 SWITCH
-61
-195
-190
-228
+72
+236
+201
+269
 init-centrally
 init-centrally
 1
@@ -228,10 +232,10 @@ NIL
 0
 
 SLIDER
-46
-155
-218
-188
+50
+193
+222
+226
 particle-density
 particle-density
 1
@@ -243,10 +247,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-1118
-20
-1181
-53
+132
+64
+195
+97
 NIL
 go
 NIL
@@ -260,16 +264,42 @@ NIL
 1
 
 SLIDER
-100
-323
-272
-356
+46
+325
+218
+358
 cluster-count
 cluster-count
 1
 10
 5
 1
+1
+NIL
+HORIZONTAL
+
+MONITOR
+101
+411
+158
+456
+NIL
+ticks
+17
+1
+11
+
+SLIDER
+47
+372
+219
+405
+iterations
+iterations
+5000
+500000
+5000
+5000
 1
 NIL
 HORIZONTAL
