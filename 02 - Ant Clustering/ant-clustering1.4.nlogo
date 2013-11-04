@@ -41,6 +41,7 @@ end
 
 
 to go
+  if ticks = iterations [ stop ]
   move-randomly
   ; haben sie was in der Hand?
   ask ants [
@@ -165,7 +166,7 @@ particle-count
 particle-count
 0
 500
-197
+115
 1
 1
 NIL
@@ -272,7 +273,7 @@ cluster-count
 cluster-count
 1
 10
-5
+4
 1
 1
 NIL
@@ -298,7 +299,7 @@ iterations
 iterations
 5000
 500000
-5000
+500000
 5000
 1
 NIL
