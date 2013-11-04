@@ -213,7 +213,7 @@ particle-density
 particle-density
 1
 3
-3
+1
 1
 1
 NIL
@@ -254,10 +254,10 @@ SLIDER
 357
 iterations
 iterations
-0
-100
-50
-1
+5000
+500000
+500000
+5000
 1
 NIL
 HORIZONTAL
