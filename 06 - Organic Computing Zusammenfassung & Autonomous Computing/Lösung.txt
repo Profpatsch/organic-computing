@@ -1,0 +1,45 @@
+== Eigenschaften eines OC-Systems
+
+Vordefiniertes emergentes Verhalten aus einem System mit vielen „dummen“
+Einheiten erzeugen.
+
+* Self-x
+** organisierend – Keine globale/systemweite Kontrolle
+** adaptiv – Optimales Verhalten lernen
+** optimisierend
+** modellierend – Auswirkungen von Entscheidungen erkennen
+** robust
+** flexibel
+
+.Organic (Computing) System
+* Sensoren
+* Aktoren
+* Passt sich autonom und dynamisch an die Umstände an
+* Optimiert sich
+
+.Design
+* Designentscheidungen werden in die Laufzeit verlegt
+
+
+== Bedingungen für ein OC-System
+
+=== Must-have
+
+* Emergenz
+* Selbstorganisation
+* Homeostase – Eigenschaft, den Zustand des Systems zu halten, damit es nicht
+  zerbricht
+
+
+=== Nice-To-Have
+
+* Verringerung der Systementropie
+* Robustheit
+* Flexibilität
+
+=== Oft erfüllt
+
+* Stigmergie (Die Aktion einer Einheit beeinflusst die Aktionen von anderen
+  Einheiten)
+* Robustheit
+
