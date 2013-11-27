@@ -1,0 +1,53 @@
+= Autonomic Computing
+
+== Zusammenfassung des Artikels über IBM
+
+* Coming from the Software Complexity Crysis
+** Systems approaching the limits of human capability
+* Autonomic Computing (to the rescue)
+** System manages itself given high-level objectives
+*** Under changing circumstances
+*** Under software failures
+** Autonomic nervous system analogy (manages low-level human functionality like
+breathing to decrease cognitive load)
+
+=== 4 aspects
+
+CHOP +
+These can be worked on seperately
+
+* Self-Configuration
+** in accordance to high-level policies
+** rest of the system adapts to its presence
+** registers its capatibilities
+* Self-Healing
+** diagnose problems (regression testing, logfiles)
+** repair them
+** retest
+* Self-Optimization
+** experiment with own parameters, measure gains and losses
+* Self-Protection
+** defend from attacks
+** anticipate problems based on early reports from sensors and apply
+countermeasures
+
+=== Structure
+
+* Autonomic Elements
+** One Autonomic Manager
+*** manages the element(s)
+*** encapsulates the functionality of the element(s)
+*** constructs and executes plans
+*** communicates with peer AEs
+** One or more Managed Elements
+*** hardware resource (CPU, storage, printer, &c.)
+*** software resource (database, dir service, legacy system, &c.)
+
+=== Relationship Management
+
+Connection resolving:: Hard-wired ↦ Physical Address ↦ Name ↦ Function
+
+* Automatic reaction to service requests, if consistent with goals
+* Automatic issueing of requests based on goals
+* NO-API
+* Autonomic Elements are Agents, system is Multi-Agent System
