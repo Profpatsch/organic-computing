@@ -1,5 +1,6 @@
 package controller;
 
+import physics.PhysicsCalculator;
 import main.Car;
 import routes.Route;
 import routes.Section;
@@ -8,37 +9,44 @@ import sim.engine.SimState;
 
 class Observer implements Connector {
 	
-	private double speed;
-	private double idealSpeed;
-	private Simulation sim; 
 	private Car car;
+	private Section section;
+	private Route route;
 	
-	public Observer() {
-		this.speed = 0;
-		this.idealSpeed = 0;
-		this.sim = null;
-		this.car = null;
-	}
-	
-	public double getIdealSpeed() {
-		return idealSpeed;
+	public float getMaxTurnSpeed() {
+		return PhysicsCalculator.getInstance().calculateMaxTurnSpeed(section.getAngle());
 	}
 
-	public double getSpeed() {
-		return this.speed;
+	public Section getSection() {
+		return section;
+	}
+
+	public Observer() {
+
+	}
+	
+	public float getIdealSpeed() {
+		return this.section.getSpeedLimit();
+	}
+
+	public float getSpeed() {
+		return this.car.getCurrentSpeed();
 	}
 	
 	public Car getCar() {
 		return this.car;
 	}
+	
+	public float getAscend(){
+		return this.section.getAscend();
+	}
 
 	@Override
 	public void step(SimState simState) {
-		this.sim = (Simulation)simState;
+		Simulation sim = (Simulation)simState;
 		this.car = sim.getCurrentCar();
-		Route route = sim.getCurrentRoute();
-		this.speed = car.getCurrentSpeed();
-		this.idealSpeed = sim.updateOrGetCurrentSection(car, route).getSpeedLimit();
+		this.route = sim.getCurrentRoute();
+		this.section = sim.updateOrGetCurrentSection(car, route);		
 	}
 	
 	

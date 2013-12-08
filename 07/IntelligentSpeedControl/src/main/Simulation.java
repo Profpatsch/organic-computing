@@ -8,6 +8,7 @@ import routes.Section;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import controller.Connector;
+import controller.Controller;
 import controller.SimpleController;
 
 public class Simulation extends SimState {
@@ -59,7 +60,7 @@ public class Simulation extends SimState {
 	}
 
 	public void loadConnector() {
-		this.connector = new SimpleController();
+		this.connector = new Controller();
 		schedule.scheduleRepeating((Steppable) this.connector);
 	}
 
