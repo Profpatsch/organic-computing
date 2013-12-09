@@ -1,0 +1,15 @@
+﻿= Aufgabenblatt 7
+
+== Aufgabe 5
+
+* Observer 
+** holt sich in jedem Schritt das aktuelle Auto, die aktuelle Route und die aktuelle Sektion
+** stellt dem Controller Geschwindikeit, Reifenradius des Autos, Gewicht des Autos, Geschwindigkeitslimit, Anstieg und Sektion zur Verfügung
+
+* Controller
+** verändert in jedem Schritt die Geschwindikeit
+*** falls Auto zu schnell: abbremsen
+*** falls Auto zu langsam: beschleunigen mit Brücksichtigung des Geschwindikeitsverlustes, der sich aus aktueller Geschwindikeit, Reifenradius, Gewicht und Steigung errechnet
+
+* Wie genau konnten Sie die vorgegebene Geschwindigkeit halten?
+** sobald die Geschwindikeit des aktuellen Geschwindikeitslimits erreicht war, war die Abweichung bis zur nächsten Änderung des Limits < 0.5

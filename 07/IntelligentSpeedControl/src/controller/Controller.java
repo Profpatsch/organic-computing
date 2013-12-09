@@ -8,6 +8,7 @@ public class Controller implements Connector {
 	
 	Observer observer;
 	
+	
 	public Controller() {
 		this.observer = new Observer();
 	}
@@ -32,17 +33,17 @@ public class Controller implements Connector {
 				float lastSpeedLoss = 0;
 				float speedLoss = 0;
 				float initialAcceleration = acceleration;
-				for (int i = 1; i < 100; i++){
+				for (int i = 1; i < 10; i++){
 					float speed = observer.getSpeed() + acceleration;
 					speedLossDelta = PhysicsCalculator.getInstance()
-							.calculateSpeedLoss(speed, observer.getAscend(), observer.getCar().getWeight(), observer.getCar().getWheelRadius()) - lastSpeedLoss;
+							.calculateSpeedLoss(speed, observer.getAscend(), observer.getWeight(), observer.getWheelRadius()) - lastSpeedLoss;
 					speedLoss += speedLossDelta;
 					acceleration = initialAcceleration + speedLoss;
 					lastSpeedLoss = speedLoss;
 				}
 			}
 		}	
-		if(acceleration < 0){
+		if(acceleration < 0) {
 			
 		}
 		

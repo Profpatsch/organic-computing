@@ -10,19 +10,22 @@ import sim.engine.SimState;
 class Observer implements Connector {
 	
 	private Car car;
-	private Section section;
 	private Route route;
+	private Section section;
 	
-	public float getMaxTurnSpeed() {
-		return PhysicsCalculator.getInstance().calculateMaxTurnSpeed(section.getAngle());
+
+	public Observer() {}
+	
+	public float getWheelRadius() {
+		return car.getWheelRadius();
+	}
+	
+	public float getWeight() {
+		return car.getWeight();
 	}
 
 	public Section getSection() {
 		return section;
-	}
-
-	public Observer() {
-
 	}
 	
 	public float getIdealSpeed() {
@@ -46,7 +49,7 @@ class Observer implements Connector {
 		Simulation sim = (Simulation)simState;
 		this.car = sim.getCurrentCar();
 		this.route = sim.getCurrentRoute();
-		this.section = sim.updateOrGetCurrentSection(car, route);		
+		this.section = sim.updateOrGetCurrentSection(car, route);	
 	}
 	
 	
