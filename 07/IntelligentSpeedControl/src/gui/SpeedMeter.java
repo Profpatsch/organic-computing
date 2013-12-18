@@ -56,7 +56,7 @@ public class SpeedMeter extends GUIState {
 					@Override
 					public  void changed(ObservableValue<?> o, Object oldVal,
 							Object newVal) {
-						gauges.getRadial().setValue(Math.floor((float) newVal));
+						gauges.getRadial().setValue(Math.floor((Float) newVal));
 					}
 				});
 
@@ -68,7 +68,7 @@ public class SpeedMeter extends GUIState {
 						// charging level is from 0 to 1, so we need to divide
 						// fuel by 100
 						gauges.getFuelMeter().setChargingLevel(
-								(float) newVal / 100);
+								(Float) newVal / 100);
 
 						// stop simulation when no fuel is left
 						if ((Float) newVal <= 0) {
@@ -82,7 +82,7 @@ public class SpeedMeter extends GUIState {
 					@Override
 					public void changed(ObservableValue<?> o, Object oldVal,
 							Object newVal) {
-						gauges.getLCD().setValue((float) newVal);
+						gauges.getLCD().setValue((Float) newVal);
 					}
 				});
 

@@ -7,25 +7,24 @@ import routes.Section;
 import main.Simulation;
 import sim.engine.SimState;
 
-class Observer implements Connector {
-	
+class Observer {
+
 	private Car car;
-	private Route route;
 	private Section section;
-	
+
 
 	public Observer() {}
-	
-	public float getWheelRadius() {
+
+    Section getSection() {
+        return section;
+    }
+
+    public float getWheelRadius() {
 		return car.getWheelRadius();
 	}
 	
 	public float getWeight() {
 		return car.getWeight();
-	}
-
-	public Section getSection() {
-		return section;
 	}
 	
 	public float getIdealSpeed() {
@@ -36,20 +35,13 @@ class Observer implements Connector {
 		return this.car.getCurrentSpeed();
 	}
 	
-	public Car getCar() {
-		return this.car;
-	}
-	
 	public float getAscend(){
 		return this.section.getAscend();
 	}
 
-	@Override
-	public void step(SimState simState) {
-		Simulation sim = (Simulation)simState;
-		this.car = sim.getCurrentCar();
-		this.route = sim.getCurrentRoute();
-		this.section = sim.updateOrGetCurrentSection(car, route);	
+	public void step(Connector c) {
+		this.car = c.getCar();
+        this.section = c.getCurrentSection();
 	}
 	
 	

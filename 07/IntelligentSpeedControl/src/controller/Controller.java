@@ -2,30 +2,20 @@ package controller;
 
 import physics.PhysicsCalculator;
 import main.Car;
+import routes.Section;
 import sim.engine.SimState;
 
-public class Controller implements Connector {
-	
-	Observer observer;
-	
-	
-	public Controller() {
-		this.observer = new Observer();
-	}
+public class Controller {
 
-	@Override
-	public void step(SimState arg0) {
-		observer.step(arg0);
-		modifySpeed(observer.getCar());
-	}
-	
+    private Observer observer;
+
 	public void modifySpeed(Car car) {
 						
 		float acceleration = observer.getIdealSpeed() - observer.getSpeed();
 		
 		if(acceleration > 0){
-			if (acceleration > observer.getCar().getMaxAcceleration()) {
-				acceleration = observer.getCar().getMaxAcceleration();
+			if (acceleration > car.getMaxAcceleration()) {
+				acceleration = car.getMaxAcceleration();
 			}
 			else {			
 				//compensate speedloss
@@ -48,5 +38,11 @@ public class Controller implements Connector {
 		}
 		
 		car.accelerate(acceleration, observer.getSection());
-	}	
+	}
+
+    public void step(Connector c) {
+        observer = c.getObserver();
+        modifySpeed(c.getCar());
+
+    }
 }
